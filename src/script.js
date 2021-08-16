@@ -3,7 +3,8 @@ const firstColor = document.querySelector('#first-color');
 const secondColor = document.querySelector('#second-color');
 const thirdColor = document.querySelector('#third-color');
 const fourthColor = document.querySelector('#fourth-color');
-const colors = document.querySelectorAll('.color')
+const clear = document.querySelector('#clear');
+const colors = document.querySelectorAll('.color');
 firstColor.style.backgroundColor = `rgb(0, 0, 0)`;
 secondColor.style.backgroundColor = `rgb(255, 0, 0)`;
 thirdColor.style.backgroundColor = `rgb(0, 255, 0)`;
@@ -19,10 +20,18 @@ function selectColor() {
 }
 selectColor();
 
-function printPixel(pixels) {
+function paintPixels(pixels) {
   pixels.forEach((pixel) => {
     pixel.addEventListener('click', () => {
       pixel.style.backgroundColor = choiceColor;
+    })
+  })
+}
+
+function clearGrid(pixels) {
+  clear.addEventListener('click', () => {
+    pixels.forEach((pixel) => {
+      pixel.style.backgroundColor = 'rgb(255, 255, 255)';
     })
   })
 }
@@ -39,7 +48,11 @@ function gridPixels(gridSize) {
     pixelBoard.appendChild(column);
   }
   const pixels = document.querySelectorAll('.pixel');
-  printPixel(pixels)
+  paintPixels(pixels);
+  clearGrid(pixels);
 } 
 
 gridPixels(5);
+
+
+

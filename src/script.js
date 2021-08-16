@@ -1,7 +1,33 @@
 const pixelBoard = document.querySelector('#pixel-board');
+const firstColor = document.querySelector('#first-color');
+const secondColor = document.querySelector('#second-color');
+const thirdColor = document.querySelector('#third-color');
+const fourthColor = document.querySelector('#fourth-color');
+const colors = document.querySelectorAll('.color')
+firstColor.style.backgroundColor = `rgb(0, 0, 0)`;
+secondColor.style.backgroundColor = `rgb(255, 0, 0)`;
+thirdColor.style.backgroundColor = `rgb(0, 255, 0)`;
+fourthColor.style.backgroundColor = `rgb(0, 0, 255)`;
+let choiceColor = firstColor.style.backgroundColor;
 
+function selectColor() {
+  colors.forEach((color) => {
+    color.addEventListener('click', () => {
+      choiceColor = color.style.backgroundColor
+    })
+  })
+}
+selectColor();
 
-function createGrid(gridSize) {
+function printPixel(pixels) {
+  pixels.forEach((pixel) => {
+    pixel.addEventListener('click', () => {
+      pixel.style.backgroundColor = choiceColor;
+    })
+  })
+}
+
+function gridPixels(gridSize) {
   for(let indexLine = 0; indexLine < gridSize; indexLine += 1) {
     let line = ''
     let column =  document.createElement('div');
@@ -12,7 +38,8 @@ function createGrid(gridSize) {
     }    
     pixelBoard.appendChild(column);
   }
+  const pixels = document.querySelectorAll('.pixel');
+  printPixel(pixels)
 } 
 
-createGrid(5);
-
+gridPixels(5);

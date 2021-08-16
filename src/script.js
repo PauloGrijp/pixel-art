@@ -5,11 +5,28 @@ const thirdColor = document.querySelector('#third-color');
 const fourthColor = document.querySelector('#fourth-color');
 const clear = document.querySelector('#clear');
 const colors = document.querySelectorAll('.color');
-firstColor.style.backgroundColor = `rgb(0, 0, 0)`;
-secondColor.style.backgroundColor = `rgb(255, 0, 0)`;
-thirdColor.style.backgroundColor = `rgb(0, 255, 0)`;
-fourthColor.style.backgroundColor = `rgb(0, 0, 255)`;
 let choiceColor = firstColor.style.backgroundColor;
+
+function renderRandomColors() {
+  
+  colors.forEach((color) => {
+    let randomColorRed = Math.floor(Math.random() * 256);
+    let randomColorGreen = Math.floor(Math.random() * 256);
+    let randomColorBlue = Math.floor(Math.random() * 256);
+    const validationColor = `rgb(${randomColorRed}, ${randomColorGreen}, ${randomColorBlue})`;
+    colors.forEach((c) => {
+      if(c.style.backgroundColor === validationColor) {
+        randomColorRed = Math.floor(Math.random() * 256);
+        randomColorGreen = Math.floor(Math.random() * 256);
+        randomColorBlue = Math.floor(Math.random() * 256);
+        color.style.backgroundColor = `rgb(${randomColorRed}, ${randomColorGreen}, ${randomColorBlue})`;
+      }
+    })
+    color.style.backgroundColor = `rgb(${randomColorRed}, ${randomColorGreen}, ${randomColorBlue})`;
+  })  
+}
+
+renderRandomColors()
 
 function selectColor() {
   colors.forEach((color) => {

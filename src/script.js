@@ -5,10 +5,29 @@ const thirdColor = document.querySelector('#third-color');
 const fourthColor = document.querySelector('#fourth-color');
 const clear = document.querySelector('#clear');
 const colors = document.querySelectorAll('.color');
+const size = document.querySelector('#board-size');
+const showBtn = document.querySelector('#show-board');
+const sectionBoard = document.querySelector('.section-board');
 let choiceColor = firstColor.style.backgroundColor;
 
-function renderRandomColors() {
-  
+let numberSize = 0;
+
+size.addEventListener('input', (e) => {
+  numberSize = e.target.value;
+})
+
+showBtn.addEventListener('click', () => {
+  sectionBoard.style.display = 'flex';
+  clear.style.display = 'block';
+  if(pixelBoard.firstChild) {
+    while(pixelBoard.firstChild) {
+      pixelBoard.removeChild(pixelBoard.childNodes[0])
+    }    
+  }
+  gridPixels(numberSize);
+});
+
+function renderRandomColors() {  
   colors.forEach((color) => {
     let randomColorRed = Math.floor(Math.random() * 256);
     let randomColorGreen = Math.floor(Math.random() * 256);
@@ -67,9 +86,4 @@ function gridPixels(gridSize) {
   const pixels = document.querySelectorAll('.pixel');
   paintPixels(pixels);
   clearGrid(pixels);
-} 
-
-gridPixels(5);
-
-
-
+}

@@ -1,14 +1,12 @@
 const pixelBoard = document.querySelector('#pixel-board');
 const firstColor = document.querySelector('#first-color');
-const secondColor = document.querySelector('#second-color');
-const thirdColor = document.querySelector('#third-color');
-const fourthColor = document.querySelector('#fourth-color');
 const clear = document.querySelector('#clear');
 const colors = document.querySelectorAll('.color');
 const size = document.querySelector('#board-size');
 const showBtn = document.querySelector('#show-board');
+const moreColor = document.querySelector('#more-color');
 const sectionBoard = document.querySelector('.section-board');
-let choiceColor = firstColor.style.backgroundColor;
+let choiceColor;
 
 let numberSize = 0;
 
@@ -42,8 +40,13 @@ function renderRandomColors() {
       }
     })
     color.style.backgroundColor = `rgb(${randomColorRed}, ${randomColorGreen}, ${randomColorBlue})`;
-  })  
+  })
+  choiceColor = firstColor.style.backgroundColor;
 }
+
+moreColor.addEventListener('click', () => {
+  renderRandomColors()
+})
 
 renderRandomColors()
 
@@ -58,7 +61,7 @@ selectColor();
 
 function paintPixels(pixels) {
   pixels.forEach((pixel) => {
-    pixel.addEventListener('click', () => {
+    pixel.addEventListener('mousedown', () => {
       pixel.style.backgroundColor = choiceColor;
     })
   })

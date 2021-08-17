@@ -9,25 +9,30 @@
 </head>
 <body>
   <h1 class="title">Paleta de Cores</h1>
-  <section>
-    <ul class="color-pixel">
-      <li class="color" id="first-color"></li>
-      <li class="color" id="second-color"></li>
-      <li class="color" id="third-color"></li>
-      <li class="color" id="fourth-color"></li>
-    </ul>
-  </section>
-  <section class="section-board-size"> 
-    <div class="choice-control">
-      <label for="board-size" class="board-label">Insira o tamanho do tabuleiro de pixels</label>
-      <input type="number" class="board-size" id="board-size"  />
-    </div>
-    <button type="button" class="show-board" id="show-board">Mostrar</button>
-  </section>
-  <section class="section-board">
-    <div class="pixel-board" id="pixel-board"></div>
-  </section> 
-  <button type="button" id="clear" class="clear">Limpar</button>
+  <main>
+    <section>
+      <ul class="color-pixel">
+        <li class="color" id="first-color"></li>
+        <li class="color"></li>
+        <li class="color"></li>
+        <li class="color"></li>
+      </ul>
+    </section>
+    <section class="section-board-size"> 
+      <div class="choice-control">
+        <label for="board-size" class="board-label">Insira o tamanho do tabuleiro de pixels: </label>
+        <input type="number" class="board-size" id="board-size"  />
+      </div>
+      <div>
+        <button type="button" class="show-board" id="show-board">Mostrar</button>
+        <button type="button" class="show-board" id="more-color">Mais Cores</button>
+      </div>
+    </section>
+    <section class="section-board">
+      <div class="pixel-board" id="pixel-board"></div>
+    </section> 
+    <button type="button" id="clear" class="clear">Limpar</button>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
